@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -x
+
+docker exec -it -u 0 -w /home/wwwroot/application/app symfony_php $@

@@ -1,0 +1,50 @@
+version: "3.5"
+services:
+    apache:
+        build: docker/apache
+        image: symfony_apache
+        container_name: symfony_apache
+        ports:
+            - 8080:80
+        volumes:
+            - symfony-sync:/home/wwwroot/application:nocopy
+        depends_on:
+            - php
+        networks:
+            - symfony_ntw 
+    mysql:
+        image: mysql:5.7
+        container_name: symfony_mysql
+        ports:
+            - "4003:3306"
+        expose:
+            - "3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root  
+        tty: true
+        networks:
+            - symfony_ntw 
+    php:
+        build: docker/php
+        image: symfony_php
+        container_name: symfony_php
+        expose:
+            - "80"
+        depends_on:
+            - mysql
+        volumes:
+            - symfony-sync:/home/wwwroot/application:nocopy
+        tty: true
+        networks:
+            - symfony_ntw 
+
+networks:
+    symfony_ntw:
+        name: symfony_ntw
+        ipam:
+            config:
+                - subnet: 172.66.0.0/24
+
+volumes:
+    symfony-sync:
+        external: true

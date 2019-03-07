@@ -1,5 +1,7 @@
 # Symfony Docker (APACHE - PHP7-FPM - MySQL)
 
+[![Build Status](https://travis-ci.org/intelligentbee/symfony_docker.svg?branch=master)](https://travis-ci.org/intelligentbee/symfony_docker)
+
 Symfony-Docker gives you everything you need for running/developing application using Symfony 4
 
 Used [docker-sync](http://docker-sync.io/) to run your application at full speed on OSX/Windows

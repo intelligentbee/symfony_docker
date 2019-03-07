@@ -43,7 +43,6 @@ RUN chmod a+x /usr/local/bin/symfony
 # set permission on cache and log
 COPY run.sh /run.sh
 RUN chmod 0755 /run.sh
-RUN /run.sh
 
 WORKDIR /home/wwwroot/application
 
